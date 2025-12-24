@@ -7,4 +7,14 @@ from typing import Dict, List, Optional #use hints for better communication - re
 
 class codeBuddy:
     """ An advanced AI chatbot for programming assistance"""
+def __init__(self):
+    self.name = "CodeBuddy🤖"
+    self.user_context = {
+        "name": None,
+        "skill_level":"beginner",
+        "current_topic": None,
+        "conversation_history" : [],
+        "preferred_language": "Python"
+    }
+    
     
