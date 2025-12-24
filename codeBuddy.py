@@ -16,5 +16,6 @@ def __init__(self):
         "conversation_history" : [],
         "preferred_language": "Python"
     }
+    self.knowledge_base = self._load_knowledge_base()
     
     
