@@ -17,5 +17,10 @@ def __init__(self):
         "preferred_language": "Python"
     }
     self.knowledge_base = self._load_knowledge_base()
-    
+    #coversation patters
+    self.patterns = {
+        r'\b(hi|hello|hey|greetings)\b': self._handle_greeting,
+        r'\b(what can you do|help|features)\b': self._handle_help,
+        r'\b(explain|what is|tell me about)\b.+': self._handle_explain,
+    }
     
