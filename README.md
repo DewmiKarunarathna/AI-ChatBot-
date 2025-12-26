@@ -7,5 +7,5 @@ I am going to learn about advanced python parts by making a simple chatBot
 # What i am learning from this:
 - __init__ is used to initialize the constrctor, the instances are created by using class_name.instance_name : value
 - the undescore before the method is to indicate that it's a private method
-- we can initialize a dictionary by dictonary_name = { value1 : assinged val1, value2 : assinged val2,...}
+- we can initialize a dictionary by dictonary_name = { value1 : assinged val1, value2 : assinged val2,...}, we can use ->Dict to indicate that we are returning a dictionary from a certain method
 - the imported "re" library is used to identify patterns in converations, format : r'\b(text1|text2|....)\b' : function to call/ what to do when the required response is matched
