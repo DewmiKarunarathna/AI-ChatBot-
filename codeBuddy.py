@@ -18,7 +18,7 @@ def __init__(self):
     }
     self.knowledge_base = self._load_knowledge_base()
     #coversation patters
-    self.patterns = {
+    self.patterns = {   #this is a dictionary                                               
         r'\b(hi|hello|hey|greetings)\b': self._handle_greeting,
         r'\b(what can you do|help|features)\b': self._handle_help,
         r'\b(explain|what is|tell me about)\b.+': self._handle_explain,
@@ -33,6 +33,20 @@ def __init__(self):
         r'\b(remember|what do you know|context)\b': self._handle_context,
         r'\b(debug|error|problem|fix)\b.+': self._handle_debug,
         r'\b(write code|generate|create)\b.+': self._handle_code_generation,
-        
     }
+    #response templates with personality
+    self.responses = { 
+        "greeting":[
+            "Hello! I'm {bot_name}, your programming assistant! 👨‍💻",
+            "Hey there! Ready to code? I'm {bot_name}! 🚀",
+            "Hi! I'm {bot_name}, here to help with all things programming! 💻"
+        ],
+        "unknown":[
+            "I'm not sure about that. Could you rephrase? 🤔",
+            "That's interesting! Could you tell me more?",
+            "I'm still learning about that. Ask me about programming instead! 📚"
+        ]
+    }
+            
+        
     
