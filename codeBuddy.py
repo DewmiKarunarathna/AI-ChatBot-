@@ -22,5 +22,17 @@ def __init__(self):
         r'\b(hi|hello|hey|greetings)\b': self._handle_greeting,
         r'\b(what can you do|help|features)\b': self._handle_help,
         r'\b(explain|what is|tell me about)\b.+': self._handle_explain,
+        r'\b(how to|example of|show me)\b.+': self._handle_example,
+        r'\b(python|javascript|java|c\+\+|html|css)\b': self._handle_language,
+        r'\b(variable|function|loop|class|array|list)\b': self._handle_concept,
+        r'\b(time|date|day)\b': self._handle_time,
+        r'\b(thank you|thanks)\b': self._handle_thanks,
+        r'\b(bye|exit|quit|goodbye)\b': self._handle_exit,
+        r'\b(my name is|I am|call me)\b(.+)': self._handle_name,
+        r'\b(beginner|intermediate|advanced)\b': self._handle_skill_level,
+        r'\b(remember|what do you know|context)\b': self._handle_context,
+        r'\b(debug|error|problem|fix)\b.+': self._handle_debug,
+        r'\b(write code|generate|create)\b.+': self._handle_code_generation,
+        
     }
     
