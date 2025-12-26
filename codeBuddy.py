@@ -6,7 +6,7 @@ import re #smart text pattern recognition
 from typing import Dict, List, Optional #use hints for better communication - returns a list, returns a dictionary,...
 
 class codeBuddy:
-    """ An advanced AI chatbot for programming assistance"""
+    """ An advanced AI chatbot for programming assistance""" #docstring - explains what does the method do. triple quotations for multi lines
     def __init__(self):
         self.name = "CodeBuddy🤖"
         self.user_context = {
@@ -47,9 +47,9 @@ class codeBuddy:
                 "I'm still learning about that. Ask me about programming instead! 📚"
             ]
     }
-    def _load_knowledge_base(self)->Dict:
+    def _load_knowledge_base(self)->Dict: #this is a type hint: telling this method is returning a dictionary
         """Load programming knowledge from file or create default"""
-        return{
+        return{ #three level structure : has three key values in it
             "python":{
                 "variables": "In Python, variables store data. Example: x = 5",
                 "functions": "Functions are defined with def. Example: def hello(): print('Hello')",
