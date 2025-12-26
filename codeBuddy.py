@@ -35,8 +35,8 @@ def __init__(self):
         r'\b(write code|generate|create)\b.+': self._handle_code_generation,
     }
     #response templates with personality
-    self.responses = { 
-        "greeting":[
+    self.responses = { #this is a data dictionary, other than a method
+        "greeting":[ #inside the square brackets is a "list"
             "Hello! I'm {bot_name}, your programming assistant! 👨‍💻",
             "Hey there! Ready to code? I'm {bot_name}! 🚀",
             "Hi! I'm {bot_name}, here to help with all things programming! 💻"
