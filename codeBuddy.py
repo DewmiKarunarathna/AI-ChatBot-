@@ -58,6 +58,19 @@ class codeBuddy:
                 "dictionaries": "Dictionaries store key-value pairs: {'name': 'John'}",
                 "classes": "Classes are blueprints for objects. Use class keyword."
             },
+            "javascript":{
+                "variables": "JS uses var, let, const: let x = 5;",
+                "functions": "Functions: function hello() { console.log('Hello'); }",
+                "loops": "for(let i=0; i<5; i++) { }",
+                "arrays": "Arrays: let arr = [1, 2, 3];"
+            },
+            "concepts":{
+                "oop": "Object-Oriented Programming uses classes and objects.",
+                "api": "API = Application Programming Interface - how software communicates.",
+                "debugging": "Debugging is finding and fixing errors in code.",
+                "algorithm": "Algorithms are step-by-step problem-solving methods."
+            }
+        }
             
             
         
