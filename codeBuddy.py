@@ -71,7 +71,15 @@ class codeBuddy:
                 "algorithm": "Algorithms are step-by-step problem-solving methods."
             }
         }
-            
+    def _save_conversation(self):
+        """save conversation history to a file"""
+        with open("chat_history.json","w") as f: #open a file under the name "----" and write
+            json.dump({ #writes python content on a json file 
+                "user":self.user_context["name"] or "Anonymous",
+                "history":self.user_context["conversation_history"][-10], #last 10 messages , inside[] is a string
+                "timestamp":datetime.datetime.now().isformat()
+            },f,indent = 2)
+        
             
         
     
