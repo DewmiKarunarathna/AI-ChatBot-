@@ -76,10 +76,12 @@ class codeBuddy:
         with open("chat_history.json","w") as f: #open a file under the name "----" and write
             json.dump({ #writes python content on a json file 
                 "user":self.user_context["name"] or "Anonymous",
-                "history":self.user_context["conversation_history"][-10], #last 10 messages , inside[] is a string
+                "history":self.user_context["conversation_history"][-10], #last 10 messages 
                 "timestamp":datetime.datetime.now().isformat()
             },f,indent = 2)
-        
+    def _handle_greeting(self, match) -> str: #type hint
+        """Handle greeting messages"""
+        return random.choice(self.responses["greeting"]).format(bot_name=self.name)  #formatting bot name with self.name      
             
         
     
