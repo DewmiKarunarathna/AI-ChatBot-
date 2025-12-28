@@ -82,6 +82,33 @@ class codeBuddy:
     def _handle_greeting(self, match) -> str: #type hint
         """Handle greeting messages"""
         return random.choice(self.responses["greeting"]).format(bot_name=self.name)  #formatting bot name with self.name      
+    def _handle_help(self, match) -> str:
+        """Show help menu"""
+        help_text = """
+        🤖 **I CAN HELP YOU WITH:**
+        
+        💻 **Programming Questions:**
+        • Explain programming concepts
+        • Provide code examples
+        • Help debug errors
+        • Explain different programming languages
+        
+        🛠️ **Features:**
+        • Remembers your name and skill level
+        • Saves conversation history
+        • Provides personalized explanations
+        • Generates simple code snippets
+        
+        💬 **Try asking:**
+        • "Explain variables in Python"
+        • "How to write a function?"
+        • "What is OOP?"
+        • "Show me a loop example"
+        • "Help me debug this error: ..."
+        
+        Type 'bye' to exit. Happy coding! 🚀
+        """
+        return help_text            
             
         
     
