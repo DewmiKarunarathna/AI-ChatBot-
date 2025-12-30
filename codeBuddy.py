@@ -123,4 +123,26 @@ class codeBuddy:
         
         return "I can explain variables, functions, loops, classes, arrays, lists, and dictionaries. Which one?" #if the above statements are false           
         
-    
+    def _handle_example(self, match) -> str: #gets parameters from here
+        """Provide code examples"""
+        user_input = match.string.lower()
+        #this is a nested dictionary
+        examples = { 
+            "python": { #dictionary for python
+                "function": "```python\ndef greet(name):\n    return f'Hello, {name}!'\n\nprint(greet('Alice'))\n```", #another dictionary
+                "loop": "```python\nfor i in range(5):\n    print(f'Number: {i}')\n```",
+                "list": "```python\nfruits = ['apple', 'banana', 'cherry']\nfor fruit in fruits:\n    print(fruit)\n```"
+            },
+            "javascript": {
+                "function": "```javascript\nfunction greet(name) {\n    return `Hello, ${name}!`;\n}\n\nconsole.log(greet('Alice'));\n```",
+                "loop": "```javascript\nfor(let i = 0; i < 5; i++) {\n    console.log(`Number: ${i}`);\n}\n```"
+            }
+        }
+        
+        lang = self.user_context["preferred_language"].lower()
+        if lang in examples:
+            for concept, code in examples[lang].items():
+                if concept in user_input:
+                    return f"💡 **Example of {concept} in {lang.title()}:**\n{code}" #replacing the place holders with the laguage user prefers
+        
+        return f"Tell me what example you want (function, loop, list, etc.) for {lang.title()}!"   #default 
