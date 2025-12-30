@@ -109,6 +109,18 @@ class codeBuddy:
         Type 'bye' to exit. Happy coding! 🚀
         """
         return help_text            
-            
+    def _handle_explain(self, match) -> str:
+        """Explain a programming concept"""
+        user_input = match.string.lower()
+        
+        # Extract topic from input
+        for topic in ["variable", "function", "loop", "class", "array", "list", "dictionary"]:
+            if topic in user_input:
+                lang = self.user_context["preferred_language"].lower()
+                if lang in self.knowledge_base and topic in self.knowledge_base[lang]:
+                    self.user_context["current_topic"] = topic
+                    return f"📚 **{topic.title()} in {lang.title()}:**\n{self.knowledge_base[lang][topic]}"
+        
+        return "I can explain variables, functions, loops, classes, arrays, lists, and dictionaries. Which one?"            
         
     
