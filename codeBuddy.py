@@ -111,16 +111,16 @@ class codeBuddy:
         return help_text            
     def _handle_explain(self, match) -> str:
         """Explain a programming concept"""
-        user_input = match.string.lower()
+        user_input = match.string.lower() #converting the string to lowercase
         
         # Extract topic from input
-        for topic in ["variable", "function", "loop", "class", "array", "list", "dictionary"]:
+        for topic in ["variable", "function", "loop", "class", "array", "list", "dictionary"]: #loop through this list
             if topic in user_input:
                 lang = self.user_context["preferred_language"].lower()
                 if lang in self.knowledge_base and topic in self.knowledge_base[lang]:
                     self.user_context["current_topic"] = topic
                     return f"📚 **{topic.title()} in {lang.title()}:**\n{self.knowledge_base[lang][topic]}"
         
-        return "I can explain variables, functions, loops, classes, arrays, lists, and dictionaries. Which one?"            
+        return "I can explain variables, functions, loops, classes, arrays, lists, and dictionaries. Which one?" #if the above statements are false           
         
     
