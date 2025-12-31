@@ -126,7 +126,7 @@ class codeBuddy:
     def _handle_example(self, match) -> str: #gets parameters from here
         """Provide code examples"""
         user_input = match.string.lower()
-        #this is a nested dictionary
+        #this is a nested 
         examples = { 
             "python": { #dictionary for python
                 "function": "```python\ndef greet(name):\n    return f'Hello, {name}!'\n\nprint(greet('Alice'))\n```", #another dictionary
@@ -146,3 +146,12 @@ class codeBuddy:
                     return f"💡 **Example of {concept} in {lang.title()}:**\n{code}" #replacing the place holders with the laguage user prefers
         
         return f"Tell me what example you want (function, loop, list, etc.) for {lang.title()}!"   #default 
+    def _handle_concept(self, match) -> str:
+        """Handle specific programming concepts"""
+        concept_match = re.search(r'\b(variable|function|loop|class|array|list)\b', match.string, re.IGNORECASE)
+        if concept_match:
+            concept = concept_match.group(1).lower()
+            lang = self.user_context["preferred_language"]
+            if lang.lower() in self.knowledge_base and concept in self.knowledge_base[lang.lower()]:
+                return f"📖 **{concept.title()} in {lang}:**\n{self.knowledge_base[lang.lower()][concept]}"
+        return "I can explain variables, functions, loops, classes, arrays, and lists. Which one?"        
