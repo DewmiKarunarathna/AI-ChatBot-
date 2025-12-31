@@ -146,10 +146,46 @@ class codeBuddy:
                     return f"💡 **Example of {concept} in {lang.title()}:**\n{code}" #replacing the place holders with the laguage user prefers
         
         return f"Tell me what example you want (function, loop, list, etc.) for {lang.title()}!"   #default 
-    def _handle_concept(self, match) -> str:
-        """Handle specific programming concepts"""
-        concept_match = re.search(r'\b(variable|function|loop|class|array|list)\b', match.string, re.IGNORECASE)
-        if concept_match:
+    def _handle_concept(self, match) -> str: #in here, regex choose only the word part, not a single letter more than that
+        """Handle specific programming concepts
+        This function explains programming concepts when users mention them directly.
+    It's triggered when the pattern matcher detects words like "variable", 
+    "function", "loop", etc. in the user's message.
+    
+    HOW IT WORKS:
+    1. Uses regular expressions to find specific programming terms in the user's input
+    2. Extracts the matched concept (e.g., "variable", "function", "loop")
+    3. Looks up the explanation from the knowledge base based on user's preferred language
+    4. Returns a formatted explanation with the concept and its definition
+    
+    INPUT:
+    - match: A regex match object containing the user's input text
+    
+    OUTPUT:
+    - A formatted string explaining the concept
+    - OR a fallback message suggesting available concepts
+    
+    EXAMPLES:
+    - User: "What is a variable?" → Returns: "📖 **Variable in Python:**\nIn Python, variables store data..."
+    - User: "Explain functions" → Returns: "📖 **Function in Python:**\nFunctions are defined with def..."
+    - User: "How do loops work?" → Returns: "📖 **Loop in Python:**\nPython has for and while loops..."
+    
+    FEATURES:
+    - Case-insensitive matching (matches "Variable", "VARIABLE", "variable")
+    - Whole-word matching only (doesn't match "variables" inside "many variables")
+    - Language-aware (uses user's preferred language from context)
+    - Returns formatted response with emoji and bold text
+    
+    FALLBACK:
+    If no concept is found or the concept isn't in the knowledge base,
+    returns a helpful message listing available concepts.
+    
+    RELATED METHODS:
+    - _handle_explain(): For "explain X" type requests
+    - _handle_example(): For "show me example of X" requests
+        """ #\b is a boundary
+        concept_match = re.search(r'\b(variable|function|loop|class|array|list)\b', match.string, re.IGNORECASE) #re.search() searches for a pattern
+        if concept_match: #if there is a matched element, this loop executes
             concept = concept_match.group(1).lower()
             lang = self.user_context["preferred_language"]
             if lang.lower() in self.knowledge_base and concept in self.knowledge_base[lang.lower()]:
