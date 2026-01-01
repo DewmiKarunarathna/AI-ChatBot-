@@ -191,3 +191,7 @@ class codeBuddy:
             if lang.lower() in self.knowledge_base and concept in self.knowledge_base[lang.lower()]:
                 return f"📖 **{concept.title()} in {lang}:**\n{self.knowledge_base[lang.lower()][concept]}"
         return "I can explain variables, functions, loops, classes, arrays, and lists. Which one?"        
+    def _handle_time(self, match) -> str:
+        """Return current time"""
+        now = datetime.datetime.now()
+        return f"⏰ It's {now.strftime('%I:%M %p')} on {now.strftime('%A, %B %d, %Y')}"
