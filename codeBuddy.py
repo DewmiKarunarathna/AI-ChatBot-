@@ -195,3 +195,11 @@ class codeBuddy:
         """Return current time"""
         now = datetime.datetime.now()
         return f"⏰ It's {now.strftime('%I:%M %p')} on {now.strftime('%A, %B %d, %Y')}"
+    def _handle_thanks(self, match) -> str:
+        """Handle thank you messages"""
+        responses = [
+            "You're welcome! Happy to help! 😊",
+            "Anytime! Keep coding! 🚀",
+            "Glad I could assist! Let me know if you need more help! 💻"
+        ]
+        return random.choice(responses) #randomly selects a response        
