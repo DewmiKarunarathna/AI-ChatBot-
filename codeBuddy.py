@@ -208,8 +208,18 @@ class codeBuddy:
         self._save_conversation()
         return "👋 Goodbye! Remember to save your code! Check out chat_history.json for our conversation." 
     def _handle_name(self, match) -> str:
-        """Extract and remember user's name"""
-        name = match.group(2).strip() #removes unnecessary blank spaces
-        self.user_context["name"] = name
+        """Extract and remember user's name
+        EXTRACT AND REMEMBER USER'S NAME
+    
+    This function is triggered when users share their name using phrases like:
+    - "My name is Alice"
+    - "I am Bob" 
+    - "Call me Charlie"
+    
+    It extracts the name from the message, stores it in the user's context,
+    and returns a personalized greeting.
+        """
+        name = match.group(2).strip() #removes unnecessary blank spaces #group 2 means extract the second group 
+        self.user_context["name"] = name #saves the value in the user profile
         self.user_context["conversation_history"].append(f"User name set to: {name}") 
         return f"Nice to meet you, {name}! I'll remember that. 😊"        
