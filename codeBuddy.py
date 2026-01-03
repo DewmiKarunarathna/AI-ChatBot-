@@ -202,7 +202,7 @@ class codeBuddy:
             "Anytime! Keep coding! 🚀",
             "Glad I could assist! Let me know if you need more help! 💻"
         ]
-        return random.choice(responses) #randomly selects a response  
+        return random.choice(responses)     
     def _handle_exit(self, match) -> str:
         """Handle exit command"""
         self._save_conversation()
