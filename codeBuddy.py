@@ -206,4 +206,10 @@ class codeBuddy:
     def _handle_exit(self, match) -> str:
         """Handle exit command"""
         self._save_conversation()
-        return "👋 Goodbye! Remember to save your code! Check out chat_history.json for our conversation."        
+        return "👋 Goodbye! Remember to save your code! Check out chat_history.json for our conversation." 
+    def _handle_name(self, match) -> str:
+        """Extract and remember user's name"""
+        name = match.group(2).strip()
+        self.user_context["name"] = name
+        self.user_context["conversation_history"].append(f"User name set to: {name}")
+        return f"Nice to meet you, {name}! I'll remember that. 😊"        
