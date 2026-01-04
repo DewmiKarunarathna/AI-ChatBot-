@@ -225,4 +225,18 @@ class codeBuddy:
                 "advanced": "🎯 Excellent! We can explore advanced topics and optimizations!"
             }
             return response.get(level, "Skill level updated!")
-        return "Please specify: beginner, intermediate, or advanced?"        
+        return "Please specify: beginner, intermediate, or advanced?"    
+    def _handle_context(self, match) -> str:
+        """Show what the bot remembers"""
+        context_info = f"""
+        📋 **What I remember about you:**
+        
+        • Name: {self.user_context['name'] or 'Not set yet'}
+        • Skill level: {self.user_context['skill_level'].title()}
+        • Preferred language: {self.user_context['preferred_language']}
+        • Current topic: {self.user_context['current_topic'] or 'None'}
+        • Messages exchanged: {len(self.user_context['conversation_history'])}
+        
+        Want to change anything? Just tell me! 😊
+        """
+        return context_info        
