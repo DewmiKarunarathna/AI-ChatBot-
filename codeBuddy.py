@@ -241,7 +241,10 @@ class codeBuddy:
         """
         return context_info        
     def _handle_debug(self, match) -> str:
-        """Provide debugging help"""
+        """Provide debugging help
+        gets a type of error as an input, returns the debugging instructions 
+        it matches a word from the input
+        """
         error_types = {
             "syntax": "Check for missing colons, parentheses, or quotes.",
             "indentation": "Python needs consistent indentation (use 4 spaces).",
@@ -250,8 +253,8 @@ class codeBuddy:
             "index": "You might be accessing an element that doesn't exist."
         }
         
-        for error, advice in error_types.items():
+        for error, advice in error_types.items(): #get pairs of values from dictionary
             if error in match.string.lower():
-                return f"🐛 **{error.title()} Error:**\n{advice}\n\nTry checking your code carefully!"
+                return f"🐛 **{error.title()} Error:**\n{advice}\n\nTry checking your code carefully!" # ** to bold format the stuff inside
         
-        return "🐛 For debugging: 1) Read error message 2) Check line numbers 3) Google the error 4) Take a break and come back!"        
+        return "🐛 For debugging: 1) Read error message 2) Check line numbers 3) Google the error 4) Take a break and come back!" #general debugging tips        
