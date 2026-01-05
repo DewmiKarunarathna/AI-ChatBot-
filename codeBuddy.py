@@ -240,3 +240,18 @@ class codeBuddy:
         Want to change anything? Just tell me! 😊
         """
         return context_info        
+    def _handle_debug(self, match) -> str:
+        """Provide debugging help"""
+        error_types = {
+            "syntax": "Check for missing colons, parentheses, or quotes.",
+            "indentation": "Python needs consistent indentation (use 4 spaces).",
+            "name": "Variable might not be defined or has a typo.",
+            "type": "Check if you're using the right data type.",
+            "index": "You might be accessing an element that doesn't exist."
+        }
+        
+        for error, advice in error_types.items():
+            if error in match.string.lower():
+                return f"🐛 **{error.title()} Error:**\n{advice}\n\nTry checking your code carefully!"
+        
+        return "🐛 For debugging: 1) Read error message 2) Check line numbers 3) Google the error 4) Take a break and come back!"        
