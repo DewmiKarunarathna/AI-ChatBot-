@@ -241,10 +241,7 @@ class codeBuddy:
         """
         return context_info        
     def _handle_debug(self, match) -> str:
-        """Provide debugging help
-        gets a type of error as an input, returns the debugging instructions 
-        it matches a word from the input
-        """
+        """Provide debugging help"""
         error_types = {
             "syntax": "Check for missing colons, parentheses, or quotes.",
             "indentation": "Python needs consistent indentation (use 4 spaces).",
@@ -257,4 +254,67 @@ class codeBuddy:
             if error in match.string.lower():
                 return f"🐛 **{error.title()} Error:**\n{advice}\n\nTry checking your code carefully!" # ** to bold format the stuff inside
         
-        return "🐛 For debugging: 1) Read error message 2) Check line numbers 3) Google the error 4) Take a break and come back!" #general debugging tips        
+        return "🐛 For debugging: 1) Read error message 2) Check line numbers 3) Google the error 4) Take a break and come back!" #general debugging tips   
+
+    def _handle_code_generation(self, match) -> str:
+        """Generate simple code based on request"""
+        request = match.string.lower()
+        lang = self.user_context["preferred_language"].lower()
+        
+        generators = {
+            "python": {
+                "calculator": """```python
+def calculator():
+    print("Simple Calculator")
+    num1 = float(input("Enter first number: "))
+    op = input("Enter operator (+, -, *, /): ")
+    num2 = float(input("Enter second number: "))
+    
+    if op == '+':
+        return num1 + num2
+    elif op == '-':
+        return num1 - num2
+    elif op == '*':
+        return num1 * num2
+    elif op == '/':
+        return num1 / num2 if num2 != 0 else "Error: Division by zero"
+    else:
+        return "Invalid operator"
+
+print(f"Result: {calculator()}")
+```""",
+                "guess number": """```python
+import random
+
+def guess_number():
+    number = random.randint(1, 100)
+    attempts = 0
+    
+    print("Guess the number (1-100)!")
+    
+    while True:
+        try:
+            guess = int(input("Your guess: "))
+            attempts += 1
+            
+            if guess < number:
+                print("Too low! 📉")
+            elif guess > number:
+                print("Too high! 📈")
+            else:
+                print(f"🎉 Correct! Guesses: {attempts}")
+                break
+        except:
+            print("Please enter a number!")
+
+guess_number()
+```"""
+            }
+        }
+        
+        if lang in generators:
+            for project, code in generators[lang].items():
+                if project in request:
+                    return f"💻 **Here's a {project} in {lang.title()}:**\n{code}"
+        
+        return f"Tell me what to generate! I can make calculators, number games, and more for {lang.title()}!"
